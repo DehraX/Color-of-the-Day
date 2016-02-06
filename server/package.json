@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/DehraX/Color-of-the-Day/issues"
   },
-  "homepage": "https://github.com/DehraX/Color-of-the-Day#readme"
+  "homepage": "https://github.com/DehraX/Color-of-the-Day#readme",
+  "dependencies": {
+    "cron": "^1.1.0",
+    "mongodb": "^2.1.6"
+  }
 }

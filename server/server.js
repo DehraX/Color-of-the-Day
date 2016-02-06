@@ -19,7 +19,54 @@ console.log("Be quiet! Server is listening @ http://localhost:%s", PORT);
 });
 
 
-/*Functions*/
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert')
+  , db = require('mongodb').db
+  , ObjectId = require('mongodb').ObjectID;
+
+// Connection URL 
+var url = 'mongodb://localhost:27017/coloroftheday';
+// Use connect method to connect to the Server 
+/*MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to db server");
+  db.close()
+});*/
+
+/*
+
+Functions for CRON job and DB writing
+Should be executed every day
+*/
+
+var CronJob = require('cron').CronJob;
+var job = new CronJob('00 * * * * *', function(){
+	var color = new initColor({nice:false, complementary: [false]});
+
+	/*Write color to DB*/
+
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  insertDocument(db, function(){
+  	db.close();
+  });
+  console.log("Connected correctly to db server");
+});
+
+
+var insertDocument = function(db, callback){
+		db.collection("colors").insert({"color": color, "date": new Date()}, 
+			function(err, result){
+				assert.equal(err, null);
+				console.log("Inserted a document into the colors collection");
+				callback(result);
+			});
+};
+
+
+});
+
+job.start();
 
 
 
@@ -30,17 +77,15 @@ Functions for generating color
 
 
 TODO: Make the color aesthetically pleasing
-TODO: Create a CRON-job to run every day
-TODO: 
+
 */
 
 
 function initColor(options){
-	var res = {};
 
-	var res.randomColor = options.nice ? generateNiceRGB() : generateRGB();/*Calling different function depening on color is nice*/
-	var res.complementary = options.complementary[0] ? complementGen(res.randomColor, options.complementary[1]) : null; /*Returns array of complementary colors if applicable*/
-	return res;
+	this.randomColor = options.nice ? generateNiceRGB() : generateRGB();/*Calling different function depening on color is nice*/
+	this.complementary = options.complementary[0] ? complementGen(res.randomColor, options.complementary[1]) : null; /*Returns array of complementary colors if applicable*/
+	return this;
 }
 
 function generateRGB(){
