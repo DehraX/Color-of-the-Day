@@ -1,0 +1,25 @@
+{
+  "name": "coloroftheday",
+  "version": "1.0.0",
+  "description": "Generates an aestethically pleasing color each day.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DehraX/Color-of-the-Day.git"
+  },
+  "keywords": [
+    "color",
+    "random",
+    "semi-random"
+  ],
+  "author": "Tobias Skarhed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DehraX/Color-of-the-Day/issues"
+  },
+  "homepage": "https://github.com/DehraX/Color-of-the-Day#readme"
+}
