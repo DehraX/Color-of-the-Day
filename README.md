@@ -31,7 +31,7 @@ The main function takes an option object as an argument.
 ```javascript
 {
 	randomColor: "#123456", /*Returns the random color in appropriate format*/
-	complimentary: [
+	complementary: [
 		color1,
 		color2,
 		color3
