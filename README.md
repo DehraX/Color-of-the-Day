@@ -2,6 +2,7 @@
 This simple app is meant to generate an aestethically pleasing color on the server, send it to the the client, which displays it in a nice manner with complementary colors.
 
 ###TODO
+Calculate color according to date of year, and second on the day. Do it according to a color wheel.
 Fetch color directly from database.
 
 ##Technologies
